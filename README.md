@@ -1,0 +1,3 @@
+aptstrap is a tool used to bootstrap a new root (or system)
+# Installation
+Working on that...
