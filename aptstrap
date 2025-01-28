@@ -1,0 +1,19 @@
+#!/bin/bash
+# Check if all is expected..
+if [ -z ${ROOT} ] do
+ ROOT=/mnt
+fi
+if [ $(whoami)
+usage() {
+echo 'usage: aptstrap [root] [packages] [options] 
+options:
+init - prepare for aptstrapping
+bootstrap - bootstrap the root (without initializing
+initstrap - initialize and bootstrap (default)
+clean - clean up apt archives (run apt clean in the root)
+
+Note: aptstrap requires apt installed on your system.
+}
+init() {
+mkdir -p $ROOT/usr/bin $ROOT/usr/lib $ROOT/var/lib $ROOT
+cp /usr/bin/apt $ROOT/usr/bin/apt > /dev/null 2>&1
