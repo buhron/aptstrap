@@ -2,18 +2,25 @@
 # Check if all is expected..
 if [ -z ${ROOT} ] do
  ROOT=/mnt
+ echo "Note: ROOT not specified, defaulting to /mnt"
 fi
-if [ $(whoami)
+if [ $(whoami) != "root" ] do
+ echo 'aptstrap requires root user to operate.'
+ exit 1
+fi
 usage() {
-echo 'usage: aptstrap [root] [packages] [options] 
+echo 'usage: ROOT=/path/to/root PACKAGES="apt packages" aptstrap [options] 
 options:
 init - prepare for aptstrapping
 bootstrap - bootstrap the root (without initializing
 initstrap - initialize and bootstrap (default)
 clean - clean up apt archives (run apt clean in the root)
 
-Note: aptstrap requires apt installed on your system.
+Note: aptstrap requires apt installed on your system.'
 }
 init() {
-mkdir -p $ROOT/usr/bin $ROOT/usr/lib $ROOT/var/lib $ROOT
+mkdir -p $ROOT/usr/bin $ROOT/usr/lib $ROOT/var/lib $ROOT/etc $ROOT/var/log $ROOT/boot $ROOT/usr/lib64 $ROOT/usr/include
+ln -s $ROOT/usr/bin $ROOT/bin
+ln -s $ROOT/usr/lib $ROOT/lib
+ln -s $ROOT/usr/lib64 $ROOT/lib64
 cp /usr/bin/apt $ROOT/usr/bin/apt > /dev/null 2>&1
