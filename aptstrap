@@ -14,4 +14,5 @@ mkdir -p $ROOT/usr/bin $ROOT/usr/lib $ROOT/var/lib $ROOT/etc $ROOT/var/log $ROOT
 ln -s $ROOT/usr/bin $ROOT/bin
 ln -s $ROOT/usr/lib $ROOT/lib
 ln -s $ROOT/usr/lib64 $ROOT/lib64
-cp /usr/bin/apt $ROOT/usr/bin/apt > /dev/null 2>&1
+cp $(which apt) $ROOT/usr/bin/apt > /dev/null 2>&1
+}
