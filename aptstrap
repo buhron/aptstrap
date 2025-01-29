@@ -1,13 +1,4 @@
 #!/bin/bash
-# Check if all is expected..
-if [ -z ${ROOT} ] do
- ROOT=/mnt
- echo "Note: ROOT not specified, defaulting to /mnt"
-fi
-if [ $(whoami) != "root" ] do
- echo 'aptstrap requires root user to operate.'
- exit 1
-fi
 usage() {
 echo 'usage: ROOT=/path/to/root PACKAGES="apt packages" aptstrap [options] 
 options:
